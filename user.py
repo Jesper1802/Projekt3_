@@ -1,6 +1,10 @@
 import pandas as pd
 
 df1 = pd.read_csv("data/normale_user.csv")
+df2 = pd.read_csv("data/invalid_user.csv")
 
-print(df1["ip"].value_counts())
+df3 = pd.concat([df1, df2], ignore_index=True)
+
+
+print(df3["monat"].value_counts()) 
 

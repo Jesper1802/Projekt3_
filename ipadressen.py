@@ -37,6 +37,8 @@ def finde_land(ip_string):
 
     return "Kein Land gefunden"
 
+
+
 unique_ips = df5["ip"].drop_duplicates()
 ip_to_country = {ip: finde_land(ip) for ip in unique_ips}
 df5["country_name"] = df5["ip"].map(ip_to_country)
@@ -44,7 +46,9 @@ df5["country_name"] = df5["ip"].map(ip_to_country)
 count_df = df5["country_name"].value_counts().reset_index()
 count_df.columns = ["country_name", "anzahl"]
 
-top_df = count_df.head(5)
+
+
+top_df = count_df.head(20)
 
 sns.set_style("whitegrid")
 os.makedirs("img", exist_ok=True)
@@ -60,7 +64,8 @@ plt.pie(
 plt.title("Top 5 Länder")
 plt.axis("equal")
 plt.savefig("img/laender_plot_pie.png", dpi=300)
-plt.show()
+
+
 
 plt.figure(figsize=(12,6))
 
@@ -80,7 +85,7 @@ plt.tight_layout()
 
 plt.savefig("img/laender_plot_bar.png", dpi=300)
 
-plt.show()
+
 
 
 
